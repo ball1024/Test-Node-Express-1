@@ -1,14 +1,19 @@
 const express = require('express')
 const router = express.Router()
 
-const {read, list, create, update, remove} = require('../Controllers/product')
+const { read, list, create, update, remove } = require('../Controllers/product')
+
+//Middleware
+const { auth } = require('../Middleware/auth');
 
 
-router.get('/product', list)
-router.get('/product/:id', read)
-router.post('/product', create)
-router.put('/product/:id', update)
-router.delete('/product/:id', remove)
+
+
+router.get('/product', auth, list)
+router.get('/product/:id', auth, read)
+router.post('/product', auth, create)
+router.put('/product/:id', auth, update)
+router.delete('/product/:id', auth, remove)
 
 
 

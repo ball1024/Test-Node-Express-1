@@ -2,11 +2,11 @@ const Product = require('../Models/Product')
 
 
 
-exports.read = async(req,res) => {
+exports.read = async (req, res) => {
     try {
         // code
         const id = req.params.id
-        const productID = await Product.find({_id:id}).exec();
+        const productID = await Product.find({ _id: id }).exec();
         res.send(productID)
     } catch (err) {
         console.log(err)
@@ -14,7 +14,7 @@ exports.read = async(req,res) => {
     }
 }
 
-exports.list = async (req,res) => {
+exports.list = async (req, res) => {
     try {
         // code
         const productList = await Product.find({}).exec();
@@ -25,7 +25,7 @@ exports.list = async (req,res) => {
     }
 }
 
-exports.create = async (req,res) => {
+exports.create = async (req, res) => {
     try {
         // code
         console.log(req.body)
@@ -37,10 +37,10 @@ exports.create = async (req,res) => {
     }
 }
 
-exports.update = async (req,res) => {
+exports.update = async (req, res) => {
     try {
         const id = req.params.id
-        const ProductUpdate = await Product.findOneAndUpdate({ _id:id }, req.body, { new: true}).exec()
+        const ProductUpdate = await Product.findOneAndUpdate({ _id: id }, req.body, { new: true }).exec()
         res.send(ProductUpdate)
     } catch (err) {
         console.log(err)
@@ -48,10 +48,10 @@ exports.update = async (req,res) => {
     }
 }
 
-exports.remove = async (req,res) => {
+exports.remove = async (req, res) => {
     try {
         const id = req.params.id
-        const deleteProduct = await Product.findOneAndDelete({_id:id}).exec()
+        const deleteProduct = await Product.findOneAndDelete({ _id: id }).exec()
         res.send(deleteProduct)
     } catch (err) {
         console.log(err)
